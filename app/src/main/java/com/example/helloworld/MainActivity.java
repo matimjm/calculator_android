@@ -177,12 +177,12 @@ public class MainActivity extends AppCompatActivity {
                     Double number2 = Double.valueOf(number);
                     String  result = null;
                     if (calculation.equals("+")) {
-                        result = (new BigDecimal(first[0]*number2).toPlainString());
+                        result = (new BigDecimal(first[0]+number2).toPlainString());
                         number = result;
                         txtResult.setText(result);
                         calculation = "";
                     } else if (calculation.equals("-")) {
-                        result = (new BigDecimal(first[0]*number2).toPlainString());
+                        result = (new BigDecimal(first[0]-number2).toPlainString());
                         number = result;
                         txtResult.setText(result);
                         calculation = "";
@@ -193,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
                         calculation = "";
                     } else if (calculation.equals("/")) {
                         if (number2!=0) {
-                            result = (new BigDecimal(first[0]*number2).toPlainString());
+                            result = (new BigDecimal(first[0]/number2).toPlainString());
                             number = result;
                             txtResult.setText(result);
                         }else {
