@@ -2,12 +2,14 @@ package com.example.helloworld;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         initViews();
 
         number = "";
-        final float[] first = new float[1];
+        final double[] first = new double[1];
 
         btnZero.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,9 +124,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!number.isEmpty()) {
-                    Float number1 = Float.valueOf(number);
+                    Double number1 = Double.valueOf(number);
                     first[0] = number1;
                 }
+                System.out.println(number);
                 number = "";
                 calculation = "+";
                 txtResult.setText(calculation);
@@ -134,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!number.isEmpty()) {
-                    Float number1 = Float.valueOf(number);
+                    Double number1 = Double.valueOf(number);
                     first[0] = number1;
                 }
                 number = "";
@@ -146,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!number.isEmpty()) {
-                    Float number1 = Float.valueOf(number);
+                    Double number1 = Double.valueOf(number);
                     first[0] = number1;
                 }
                 number = "";
@@ -159,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!number.isEmpty()) {
-                    Float number1 = Float.valueOf(number);
+                    Double number1 = Double.valueOf(number);
                     first[0] = number1;
                 }
                 number = "";
@@ -171,28 +174,32 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!number.isEmpty()) {
-                    Float number2 = Float.valueOf(number);
-                    String result = null;
-
+                    Double number2 = Double.valueOf(number);
+                    String  result = null;
                     if (calculation.equals("+")) {
-                        result = Float.toString(first[0]+number2);
+                        result = (new BigDecimal(first[0]*number2).toPlainString());
                         number = result;
                         txtResult.setText(result);
                         calculation = "";
                     } else if (calculation.equals("-")) {
-                        result = Float.toString(first[0]-number2);
+                        result = (new BigDecimal(first[0]*number2).toPlainString());
                         number = result;
                         txtResult.setText(result);
                         calculation = "";
                     } else if (calculation.equals("*")) {
-                        result = Float.toString(first[0]*number2);
+                        result = (new BigDecimal(first[0]*number2).toPlainString());
                         number = result;
                         txtResult.setText(result);
                         calculation = "";
                     } else if (calculation.equals("/")) {
-                        result = Float.toString(first[0]/number2);
-                        number = result;
-                        txtResult.setText(result);
+                        if (number2!=0) {
+                            result = (new BigDecimal(first[0]*number2).toPlainString());
+                            number = result;
+                            txtResult.setText(result);
+                        }else {
+                            txtResult.setText("Error");
+                        }
+
                         calculation = "";
                     }
                 }

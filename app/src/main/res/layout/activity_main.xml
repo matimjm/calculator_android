@@ -229,10 +229,9 @@
 
     <TextView
         android:id="@+id/txtResult"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="110dp"
         android:textSize="100sp"
         app:layout_constraintBottom_toTopOf="@+id/btnDelete"
-        app:layout_constraintEnd_toEndOf="@+id/btnAnswer"
         app:layout_constraintStart_toStartOf="@+id/btnReset" />
 </androidx.constraintlayout.widget.ConstraintLayout>
